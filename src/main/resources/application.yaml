@@ -1,3 +1,12 @@
 spring:
-  application:
-    name: ZestSpringBootApplication
+  config:
+    import: optional:application-secret.yaml
+  datasource:
+#    Defined in application-secret.yaml
+#    username: DB_USERNAME
+#    password: DB_PASSWORD
+    url: jdbc:mysql://localhost:3306/zest_ems
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
