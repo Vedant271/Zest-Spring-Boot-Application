@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: ZestSpringBootApplication
   config:
     import: optional:application-secret.yaml
   datasource:
