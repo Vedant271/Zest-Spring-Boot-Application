@@ -2,6 +2,7 @@ package com.example.ZestSpringBootApplication.service;
 
 import com.example.ZestSpringBootApplication.entity.Employee;
 import com.example.ZestSpringBootApplication.repository.EmployeeRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,9 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeService {
-    @Autowired
-    EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     public Employee saveEmployee(Employee employee){
         return employeeRepository.save(employee);
