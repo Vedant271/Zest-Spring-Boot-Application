@@ -8,28 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
-    @PostMapping("/save")
-    public void saveEmployee(@RequestBody Employee employee){
-        employeeService.saveEmployee(employee);
+    @PostMapping
+    public Employee saveEmployee(@RequestBody Employee employee){
+        return employeeService.saveEmployee(employee);
     }
 
-    @GetMapping("/getById/{id}")
-    public Employee getEmployeeById(@PathVariable("id") int employeeId){
-        return employeeService.getEmployeeById(employeeId);
-    }
-
-    @GetMapping("/getAll")
+    @GetMapping
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }
 
-    @DeleteMapping("/deleteById/{id}")
-    public void deleteEmployeeById(@PathVariable("id") int employeeId){
-        employeeService.deleteEmployeeById(employeeId);
+    @GetMapping("/{id}")
+    public Employee getEmployeeById(@PathVariable int id){
+        return employeeService.getEmployeeById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Employee updateEmployee(@PathVariable int id, @RequestBody Employee employee){
+        return employeeService.updateEmployee(id, employee);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable int id){
+        employeeService.deleteEmployeeById(id);
     }
 }
