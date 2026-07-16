@@ -1,11 +1,8 @@
 package com.example.ZestSpringBootApplication.service;
 
-import com.example.ZestSpringBootApplication.dto.EmployeeDTO;
 import com.example.ZestSpringBootApplication.entity.Employee;
-import com.example.ZestSpringBootApplication.exception.ResourceNotFoundException;
 import com.example.ZestSpringBootApplication.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,7 +31,6 @@ public class EmployeeService {
     public Employee updateEmployee(int id, Employee employee){
         Employee existingEmployee = employeeRepository.findById(id).get();
 
-        existingEmployee.setId(employee.getId());
         existingEmployee.setName(employee.getName());
         existingEmployee.setEmail(employee.getName());
         existingEmployee.setDepartment(employee.getName());
