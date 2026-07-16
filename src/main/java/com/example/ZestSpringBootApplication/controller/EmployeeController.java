@@ -3,6 +3,9 @@ package com.example.ZestSpringBootApplication.controller;
 import com.example.ZestSpringBootApplication.entity.Employee;
 import com.example.ZestSpringBootApplication.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +22,10 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees(){
-        return employeeService.getAllEmployees();
+    public Page<Employee> getAllEmployees(
+            @PageableDefault(page = 0, size = 10, sort = "id")
+            Pageable pageable) {
+        return employeeService.getAllEmployees(pageable);
     }
 
     @GetMapping("/{id}")
@@ -35,6 +40,6 @@ public class EmployeeController {
 
     @DeleteMapping("/{id}")
     public void deleteEmployee(@PathVariable int id){
-        employeeService.deleteEmployeeById(id);
+        employeeService.deleteEmployee(id);
     }
 }

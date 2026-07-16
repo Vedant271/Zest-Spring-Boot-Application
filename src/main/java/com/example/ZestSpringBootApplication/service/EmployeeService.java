@@ -3,6 +3,8 @@ package com.example.ZestSpringBootApplication.service;
 import com.example.ZestSpringBootApplication.entity.Employee;
 import com.example.ZestSpringBootApplication.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,12 +22,12 @@ public class EmployeeService {
         return employeeRepository.findById(id).get();
     }
 
-    public List<Employee> getAllEmployees(){
-        return employeeRepository.findAll();
+    public Page<Employee> getAllEmployees(Pageable pageable) {
+        return employeeRepository.findAll(pageable);
     }
 
-    public void deleteEmployeeById(int employeeId){
-        employeeRepository.deleteById(employeeId);
+    public void deleteEmployee(int id){
+        employeeRepository.deleteById(id);
     }
 
     public Employee updateEmployee(int id, Employee employee){
