@@ -35,8 +35,8 @@ public class EmployeeService {
         Employee existingEmployee = employeeRepository.findById(id).get();
 
         existingEmployee.setName(employee.getName());
-        existingEmployee.setEmail(employee.getName());
-        existingEmployee.setDepartment(employee.getName());
+        existingEmployee.setEmail(employee.getEmail());
+        existingEmployee.setDepartment(employee.getDepartment());
         existingEmployee.setPosition(employee.getPosition());
         existingEmployee.setSalary(employee.getSalary());
         existingEmployee.setDateOfJoining(employee.getDateOfJoining());
